@@ -8,38 +8,11 @@ export default function Pokedex() {
   const [error, setError] = useState(null);
   const [nextPage, setNextPage] = useState(null);
   const [prevPage, setPrevPage] = useState(null);
+  const defaultAPI = "https://pokeapi.co/api/v2/pokemon/";
 
-  const getPokedexWithApi = async () => {
+  const getPokedexWithApi = async (api) => {
     try {
-      const getDataPokedex = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon/"
-      );
-      if (getDataPokedex.data.next) setNextPage(getDataPokedex.data.next);
-      if (getDataPokedex.data.previous)
-        setPrevPage(getDataPokedex.data.previous);
-
-      setPokedex(getDataPokedex.data);
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  const getPokedexWithApiNext = async () => {
-    try {
-      const getDataPokedex = await axios.get(nextPage);
-      if (getDataPokedex.data.next) setNextPage(getDataPokedex.data.next);
-      if (getDataPokedex.data.previous)
-        setPrevPage(getDataPokedex.data.previous);
-
-      setPokedex(getDataPokedex.data);
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  const getPokedexWithApiPrev = async () => {
-    try {
-      const getDataPokedex = await axios.get(prevPage);
+      const getDataPokedex = await axios.get(api);
       if (getDataPokedex.data.next) setNextPage(getDataPokedex.data.next);
       if (getDataPokedex.data.previous)
         setPrevPage(getDataPokedex.data.previous);
@@ -52,16 +25,16 @@ export default function Pokedex() {
 
   const handleNext = (e) => {
     e.preventDefault();
-    getPokedexWithApiNext();
+    getPokedexWithApi(nextPage);
   };
 
   const handlePrev = (e) => {
     e.preventDefault();
-    getPokedexWithApiPrev();
+    getPokedexWithApi(prevPage);
   };
 
   useEffect(() => {
-    getPokedexWithApi();
+    getPokedexWithApi(defaultAPI);
   }, []);
 
   return (
@@ -80,7 +53,6 @@ export default function Pokedex() {
 
 const ContainerLayout = styled.div`
   padding: 5px 15px;
-  margin: 0 auto !important;
 `;
 
 const Button = styled.button`
