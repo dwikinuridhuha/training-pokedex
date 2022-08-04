@@ -40,12 +40,12 @@ export default function Pokedex() {
   return (
     <React.Fragment>
       <ContainerLayout>
+        {error ? <h1>{error}</h1> : <PokedexList pokedex={pokedex} />}
+
         <ButtonCenter>
           {prevPage && <Button onClick={handlePrev}>Previous</Button>}
           {nextPage && <Button onClick={handleNext}>Next</Button>}
         </ButtonCenter>
-
-        {error ? <h1>{error}</h1> : <PokedexList pokedex={pokedex} />}
       </ContainerLayout>
     </React.Fragment>
   );
@@ -63,6 +63,6 @@ const Button = styled.button`
 `;
 
 const ButtonCenter = styled.div`
-  margin: auto;
+  margin: 12px auto;
   text-align: center;
 `;
