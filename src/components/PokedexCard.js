@@ -7,7 +7,8 @@ export default function PokedexCard({ pokemon }) {
   const [imgPokemon, setImgPokemon] = useState("");
   const [imgError, setImgError] = useState(null);
 
-  const showImgError = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png";
+  const showImgError =
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png";
 
   useEffect(() => {
     axios
@@ -19,21 +20,21 @@ export default function PokedexCard({ pokemon }) {
   }, []);
 
   return (
-    <div>
-      <Col span={10}>
-        <Card
-          hoverable
-          style={{
-            width: 240,
-            margin: 15,
-          }}
-          cover={<img alt={pokemon.name} src={imgError ? showImgError : imgPokemon} />}
-        >
-          <hr />
-          <NameStylePokemon>{pokemon.name}</NameStylePokemon>
-        </Card>
-      </Col>
-    </div>
+    <Col span={10}>
+      <Card
+        hoverable
+        style={{
+          width: 240,
+          margin: 15,
+        }}
+        cover={
+          <img alt={pokemon.name} src={imgError ? showImgError : imgPokemon} />
+        }
+      >
+        <hr />
+        <NameStylePokemon>{pokemon.name}</NameStylePokemon>
+      </Card>
+    </Col>
   );
 }
 
