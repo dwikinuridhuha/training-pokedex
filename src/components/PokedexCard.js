@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, Col } from "antd";
 import axios from "axios";
+import styled from "styled-components";
 
 export default function PokedexCard({ pokemon }) {
   const [imgPokemon, setImgPokemon] = useState("");
@@ -28,9 +29,16 @@ export default function PokedexCard({ pokemon }) {
           }}
           cover={<img alt={pokemon.name} src={imgError ? showImgError : imgPokemon} />}
         >
-          <p>{pokemon.name}</p>
+          <hr />
+          <NameStylePokemon>{pokemon.name}</NameStylePokemon>
         </Card>
       </Col>
     </div>
   );
 }
+
+const NameStylePokemon = styled.strong`
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+`;
