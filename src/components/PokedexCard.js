@@ -20,7 +20,7 @@ export default function PokedexCard({ pokemon }) {
   }, []);
 
   return (
-    <Col span={6}>
+    <Col xl={6} md={8} sm={24}>
       <Card
         hoverable
         style={{
