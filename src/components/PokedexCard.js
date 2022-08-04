@@ -6,6 +6,8 @@ export default function PokedexCard({ pokemon }) {
   const [imgPokemon, setImgPokemon] = useState("");
   const [imgError, setImgError] = useState(null);
 
+  const showImgError = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png";
+
   useEffect(() => {
     axios
       .get(pokemon.url)
@@ -24,7 +26,7 @@ export default function PokedexCard({ pokemon }) {
             width: 240,
             margin: 15,
           }}
-          cover={<img alt={pokemon.name} src={imgPokemon} />}
+          cover={<img alt={pokemon.name} src={imgError ? showImgError : imgPokemon} />}
         >
           <p>{pokemon.name}</p>
         </Card>
