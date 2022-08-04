@@ -64,4 +64,5 @@ const Button = styled.button`
 
 const ButtonCenter = styled.div`
   margin: auto;
+  text-align: center;
 `;
